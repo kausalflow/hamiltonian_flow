@@ -111,7 +111,7 @@ class SIR:
         :param n_steps: Number of steps to simulate
         :return: DataFrame with time, S, I, R columns
         """
-        time_steps = np.arange(0, n_steps) * self.system.delta_t
+        time_steps = np.arange(1, n_steps) * self.system.delta_t
 
         return self(time_steps)
 
@@ -155,8 +155,8 @@ class SIR:
 
             delta_s, delta_i, delta_r = self._step(susceptible, infected)
 
-            susceptible += delta_s
-            infected += delta_i
-            recovered += delta_r
+            susceptible = max(susceptible + delta_s, 0)
+            infected = max(infected + delta_i, 0)
+            recovered = max(recovered + delta_r, 0)
 
         return pd.DataFrame(results)

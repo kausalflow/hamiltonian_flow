@@ -94,6 +94,7 @@ ignore = [
 "tests/**/*.py" = [
     "S101",  # assert: Fine in tests
     "SLF001",  # private-member-access: find in tests
+    "PLR2004", # magic value is fine in tests
 ]
 
 

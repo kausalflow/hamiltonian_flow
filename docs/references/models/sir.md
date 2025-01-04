@@ -1,0 +1,3 @@
+# SIR
+
+::: hamilflow.models.sir

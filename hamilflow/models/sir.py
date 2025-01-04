@@ -141,7 +141,14 @@ class SIR:
         infected = self.initial_condition.infected_0
         recovered = self.initial_condition.recovered_0
 
-        results = []
+        results = [
+            {
+                "t": 0,
+                "S": susceptible,
+                "I": infected,
+                "R": recovered,
+            },
+        ]
 
         for t_i in np.array(t):
             results.append(

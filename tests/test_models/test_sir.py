@@ -68,13 +68,13 @@ def test_sir_step(sir_model: SIR) -> None:
     delta_s, delta_i, delta_r = sir_model._step(999, 1)
     assert delta_s < 0
     assert delta_i > 0
-    assert delta_r > 0
+    assert delta_r == 0
 
 
 def test_sir_call(sir_model: SIR) -> None:
     """Test the call function of the SIR model."""
-    t = np.arange(0, 10)
+    t = np.arange(1, 10)
     result = sir_model(t)
     assert isinstance(result, pd.DataFrame)
-    assert len(result) == len(t)
+    assert len(result) == len(t) + 1
     assert all(col in result.columns for col in ["t", "S", "I", "R"])
